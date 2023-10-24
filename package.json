@@ -1,0 +1,19 @@
+{
+  "name": "stories",
+  "version": "1.0.0",
+  "description": "top stories",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "start": "concurrently \"yarn workspace server start\" \"yarn workspace client start\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
