@@ -1,18 +1,26 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
 import StoryCard from './components/Card';
-
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState([]);
+
+  // Define the asynchronous function to fetch top stories
+  const getTopStories = async () => {
+    try {
+      const response = await axios.get('/topStories');
+      console.log(response.data.data);
+      setData(response.data.data.results);
+    } catch (error) {
+      console.error('Error fetching top stories:', error);
+    }
+  };
+
   useEffect(() => {
-    fetch('/topStories')
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.data.results);
-      setData(data.data.results);
-    })
-  }, [])
+    // Call the getTopStories function when the component is mounted
+    getTopStories();
+  }, []);
   return (
     <Box>
       <Typography sx={{textAlign: 'center', mb: 10}} variant="h2" gutterBottom>
