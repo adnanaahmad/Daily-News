@@ -10,7 +10,7 @@ function App() {
   const getTopStories = async () => {
     try {
       const response = await axios.get('/topStories');
-      console.log(response.data.data);
+      //console.log(response.data.data);
       setData(response.data.data.results);
     } catch (error) {
       console.error('Error fetching top stories:', error);
